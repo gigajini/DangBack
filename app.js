@@ -67,10 +67,6 @@ app.use((err,req, res, next) => {
     });
 })
 
-app.get('/users/:id', cors(corsOptions), function (req, res, next) {
-    res.json({msg: 'https://sub.example.app 규칙인 Origin에 대하여 개방'})
-})
-
 // 서버 포트 지정
 app.listen(app.get('port'),() => {
     console.log(`${app.get('port')}번 포트에서 서버 실행`);
