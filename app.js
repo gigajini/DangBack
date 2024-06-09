@@ -6,7 +6,8 @@ const session = require('express-session'); // 세션 모듈
 const cors = require('cors'); // cors 모듈
 let corsOptions = {
     origin: process.env.CLIENT_URL,
-    credentials: true
+    credentials: true,
+    optionsSuccessStatus: 200 
 }
 
 const passport = require('passport'); // 패스포트 모듈
@@ -64,6 +65,10 @@ app.use((err,req, res, next) => {
         code:err.status || 500,
         message : err.message || '서버 에러 발생'
     });
+})
+
+app.get('/users/:id', cors(corsOptions), function (req, res, next) {
+    res.json({msg: 'https://sub.example.app 규칙인 Origin에 대하여 개방'})
 })
 
 // 서버 포트 지정
